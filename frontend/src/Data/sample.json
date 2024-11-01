@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "title": "The Ultimate Guide to Digital Marketing",
+      "author": "John Doe",
+      "date": "2023-10-15",
+      "description": "Explore digital marketing strategies that can help you grow your online presence and reach more customers.",
+      "image": "https://example.com/images/digital-marketing.jpg",
+      "link": "/blog/the-ultimate-guide-to-digital-marketing",
+      "tags": ["marketing", "digital", "strategy"]
+    },
+    {
+      "id": 2,
+      "title": "Top 10 Web Development Trends in 2024",
+      "author": "Jane Smith",
+      "date": "2024-01-08",
+      "description": "Stay ahead of the curve with the latest trends in web development, including AI integration, responsive design, and more.",
+      "image": "https://example.com/images/web-development-trends.jpg",
+      "link": "/blog/top-10-web-development-trends-2024",
+      "tags": ["web development", "technology", "trends"]
+    },
+    {
+      "id": 3,
+      "title": "Mastering CSS for Beginners",
+      "author": "Emily Chen",
+      "date": "2023-12-20",
+      "description": "A beginner-friendly guide to understanding and mastering CSS, covering fundamentals and best practices.",
+      "image": "https://example.com/images/css-guide.jpg",
+      "link": "/blog/mastering-css-for-beginners",
+      "tags": ["CSS", "web design", "beginner"]
+    },
+    {
+      "id": 4,
+      "title": "How to Start a Successful Blog",
+      "author": "Michael Lee",
+      "date": "2023-11-05",
+      "description": "Learn how to launch a blog, create engaging content, and build an audience from scratch.",
+      "image": "https://example.com/images/blogging-guide.jpg",
+      "link": "/blog/how-to-start-a-successful-blog",
+      "tags": ["blogging", "content creation", "SEO"]
+    },
+    {
+      "id": 5,
+      "title": "A Guide to JavaScript ES6 Features",
+      "author": "David Brown",
+      "date": "2023-09-30",
+      "description": "Understand and leverage ES6 features to write cleaner, more efficient JavaScript code.",
+      "image": "https://example.com/images/js-es6-guide.jpg",
+      "link": "/blog/a-guide-to-javascript-es6-features",
+      "tags": ["JavaScript", "programming", "ES6"]
+    }
+  ]
+  

@@ -5,7 +5,7 @@ const Navbar = () => {
     
   return (
     <>
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-200">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -36,21 +36,21 @@ const Navbar = () => {
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <NavLink to={'/'} className="btn btn-ghost text-xl">BLOG</NavLink>
+    <NavLink to={'/'} className="btn btn-ghost text-xl">BLOGIFY</NavLink>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><NavLink to={'/'}>Item 1</NavLink></li>
+    <ul className="menu menu-horizontal px-1 gap-4">
+      <li><NavLink to={'/'}>Home</NavLink></li>
       <li>
         <details>
-          <summary>Parent</summary>
+          <summary>About Us</summary>
           <ul className="p-2">
             <li><NavLink to={'/'}>Submenu 1</NavLink></li>
             <li><a>Submenu 2</a></li>
           </ul>
         </details>
       </li>
-      <li><a>Item 3</a></li>
+      <li><NavLink to={'/blogs'}>Blogs</NavLink></li>
     </ul>
   </div>
   <div className="navbar-end mr-10 gap-5">
