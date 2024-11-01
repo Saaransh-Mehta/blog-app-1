@@ -1,16 +1,23 @@
 
 import React from "react"
+import Navbar from "./Components/Navbar"
+import { BrowserRouter as Router,Route,Routes } from "react-router-dom"
+import Home from "./Components/Home"
+import Register from "./Components/Register"
 
 function App() {
 
 
   return (
-    <>
-    <div className="text-3xl flex justify-center text-slate-900">
+    <Router>
    
+   <Navbar/>
+   <Routes>
+    <Route path="/" element={<Home/>}/>
+    <Route path="/register" element={<Register/>}/>
+   </Routes>
 
-    </div>
-    </>
+    </Router>
   )
 }
 
