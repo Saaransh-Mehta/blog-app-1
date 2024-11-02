@@ -29,7 +29,11 @@ const UserSchema = new Schema({
             type:Schema.Types.ObjectId,
             ref:"Post"
         }
-    ]
+    ],
+    accessToken:{
+        type:String,
+        default:""
+    }
 })
 
 export const User = mongoose.model("User",UserSchema)
