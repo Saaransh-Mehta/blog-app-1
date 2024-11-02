@@ -9,7 +9,7 @@ const BlogSection = () => {
     })
   return (
     <>
-    <div className='bg-base-200'>
+    <div className='bg-cream'>
     <div>
         .
         <p className='headText opacity-0 text-3xl mt-5 flex justify-center'>Recent Blogs Posted</p>
@@ -17,7 +17,7 @@ const BlogSection = () => {
     <div className='mt-10 card-show grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center'>
     {sample.map((data)=>{
         return(
-            <div className="card bg-base-200 w-96 shadow-xl">
+            <div className="card bg-cream w-96 shadow-xl">
   <figure>
     <img
       src={data.image}
