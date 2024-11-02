@@ -4,6 +4,7 @@ import connectDB from './src/db/db.js';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import UserRouter from './src/routes/userRoute.js';
+import { BlogRouter } from './src/routes/blogRouter.js';
 
 dotenv.config({
     path:'./.env'
@@ -21,6 +22,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/api/user',UserRouter)
+app.use('/api/blog',BlogRouter)
 
 
 app.listen(3000,()=>{

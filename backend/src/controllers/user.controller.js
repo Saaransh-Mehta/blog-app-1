@@ -31,7 +31,7 @@ const registerUser = async(req,res)=>{
             username,
             email,
             password:hashedPasword,
-            isActive:true
+           
          })
         return res.status(200).json({
             message:"User created successfully",
@@ -57,6 +57,7 @@ const loginUser = async(req,res)=>{
 
     const token = jwt.sign({email:user.email, id:user._id},process.env.JWT_KEY,{expiresIn:"5h"})
     user.accessToken = token
+    user.isActive = true
     await user.save()
 
     res.cookie("jwt",token,{
@@ -73,6 +74,7 @@ const getUser = async(req,res)=>{
 
     
     const user = req.user
+    
     return res.status(200).json({
         message:"User fetched successfully",
         data:user
@@ -80,6 +82,7 @@ const getUser = async(req,res)=>{
 }
 
 const logoutUser= async(req,res)=>{
+    
     res.clearCookie("jwt",{
         httpOnly:true,
         secure:true
