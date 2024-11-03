@@ -55,7 +55,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end mr-10 gap-5">
     <NavLink to={'/register'} className="btn">Get Start with us</NavLink>
-    <a className="btn btn-primary">Create a Blog</a>
+    <NavLink to={'/create-blog'} className="btn btn-primary">Create a Blog</NavLink>
   </div>
 </div>
    

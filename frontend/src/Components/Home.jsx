@@ -7,7 +7,7 @@ import Footer from './Footer'
 
 const Home = () => {
     useGSAP(()=>{
-        gsap.to('.blogify', { opacity:1,duration: 2, x:100,y:200,ease: 'power1.inOut' })
+        gsap.to('.blogify', { opacity:1,duration: 2, x:100,y:200,ease: 'power1.inOut', yoyo: true, repeat: -1 })
     })
   return (
     <>
