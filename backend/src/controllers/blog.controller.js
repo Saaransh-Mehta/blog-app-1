@@ -53,5 +53,31 @@ const updatePost = async(req,res)=>{
     })
     
 }
+const getPost = async(req,res)=>{
 
-export {createPost,updatePost}
+    const getPost = await Post.findOne({_id:req.params.id}).select("-_id ")
+    if(!getPost){
+        throw new Error("Post not found")
+    }
+
+    return res.status(200).json({
+        message:"Post fetched successfully",
+        data:getPost
+    })
+
+}
+
+const deletePost = async (req,res)=>{
+
+    const deletePost = await Post.findOne({_id:req.params.id})
+    if(!deletePost){
+        throw new Error("Post not found")
+    }
+
+    await deletePost.deleteOne()
+
+    return res.status(200).json({
+        message:"Psot deleted succesfully"
+    })
+}
+export {createPost,updatePost,getPost,deletePost}
