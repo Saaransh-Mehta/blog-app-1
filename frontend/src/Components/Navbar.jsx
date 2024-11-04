@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
+  const [isActive,setIsActive] = useState(true)
     
   return (
     <>
@@ -54,7 +55,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end mr-10 gap-5">
-    <NavLink to={'/register'} className="btn">Get Start with us</NavLink>
+   {isActive ? <NavLink to={'/register'} className="btn ">Get Start with us</NavLink> : null}
     <NavLink to={'/create-blog'} className="btn btn-primary">Create a Blog</NavLink>
   </div>
 </div>
