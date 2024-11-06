@@ -9,6 +9,7 @@ const Register = () => {
   const [password,setPassword] = useState('')
   const [existingUser,setExistingUser] = useState(false)
   const [isChecked,setIsChecked] = useState(false)
+  const [error,setError] = useState(false)
 
   
 
@@ -37,11 +38,19 @@ const Register = () => {
           email,
           password
         })
+      }).then((res)=>{
+        if(!res.ok){
+          setExistingUser(true)
+        }
+        if(existingUser){
+          setError("User already exists")
+        }
       })
       console.log('success')
       setEmail('')
       setPassword('')
       setUsername('')
+     
     }
     catch(error){
       console.log(error)
@@ -117,11 +126,12 @@ const Register = () => {
                 <button className="btn btn-active btn-primary btn-block max-w-[200px]"  onClick={handleSubmit} disabled={!isChecked}>
                   Sign Up
                 </button>
-              
+                {error ? <h5 className='text-red-500 bg-error'>User exists</h5>: null}
+              ``
               </div>
             </div>
           </div>
-        
+      
         </div>
       </div>
     </div>

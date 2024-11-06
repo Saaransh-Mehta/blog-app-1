@@ -6,6 +6,7 @@ import Home from "./Components/Home"
 import Register from "./Components/Register"
 import BlogSection from "./Components/BlogSection"
 import CreateBlog from "./Components/CreateBlog"
+import Footer from "./Components/Footer"
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
     <Route path="/blogs" element={<BlogSection/>}/>
     <Route path="/create-blog" element={<CreateBlog/>}/>
    </Routes>
-
+    <Footer/>
     </Router>
   )
 }
