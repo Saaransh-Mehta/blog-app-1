@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import loginImg from '../Images/login-2.png'
 import axios from 'axios'
+import { NavLink } from 'react-router-dom'
 
 const Register = () => {
 
@@ -126,8 +127,11 @@ const Register = () => {
                 <button className="btn btn-active btn-primary btn-block max-w-[200px]"  onClick={handleSubmit} disabled={!isChecked}>
                   Sign Up
                 </button>
+             <NavLink to={"/login"}  className="btn btn-active btn-primary btn-block max-w-[200px]">
+                  Login
+              </NavLink>
                 {error ? <h5 className='text-red-500 bg-error'>User exists</h5>: null}
-              ``
+              
               </div>
             </div>
           </div>

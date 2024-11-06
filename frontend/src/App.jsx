@@ -7,6 +7,7 @@ import Register from "./Components/Register"
 import BlogSection from "./Components/BlogSection"
 import CreateBlog from "./Components/CreateBlog"
 import Footer from "./Components/Footer"
+import Login from "./Components/Login"
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
     <Route path="/register" element={<Register/>}/>
     <Route path="/blogs" element={<BlogSection/>}/>
     <Route path="/create-blog" element={<CreateBlog/>}/>
+    <Route path="/login" element={<Login/>}/>
    </Routes>
     <Footer/>
     </Router>
