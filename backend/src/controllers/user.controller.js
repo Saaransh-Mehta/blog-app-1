@@ -60,11 +60,13 @@ const loginUser = async(req,res)=>{
     user.isActive = true
     await user.save()
 
-    res.cookie("jwt",token,{
+
+    return res.status(200).cookie("jwt",token,{
         httpOnly:true,
-        secure:true
-    })
-    return res.status(200).json({
+        secure:true,
+        sameSite:"Lax"
+
+    }).json({
         message:"User logged in successfully",
         data:user
     })
