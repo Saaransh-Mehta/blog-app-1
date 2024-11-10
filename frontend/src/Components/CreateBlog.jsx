@@ -11,8 +11,10 @@ const CreateBlog = () => {
     await fetch('http://localhost:3000/api/blog/create',{
       method:'POST',
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Authorization':`Bearer ${token}`
       },
+      include:'credentials',
       body:JSON.stringify({
         title,
         description,
