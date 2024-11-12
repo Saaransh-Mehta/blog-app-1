@@ -21,7 +21,11 @@ const createPost = async(req,res)=>{
         content,
         author:req.user._id
     })
-
+    await post.save()
+    await User.findByIdAndUpdate({_id:req.params.id},{
+        $push:{posts:post._id}
+    })
+    
     return res.status(200).json({
         message:"Blog created successfully",
         data:post

@@ -8,6 +8,7 @@ import BlogSection from "./Components/BlogSection"
 import CreateBlog from "./Components/CreateBlog"
 import Footer from "./Components/Footer"
 import Login from "./Components/Login"
+import DashBoard from "./Components/DashBoard"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
     <Route path="/blogs" element={<BlogSection/>}/>
     <Route path="/create-blog" element={<CreateBlog/>}/>
     <Route path="/login" element={<Login/>}/>
+    <Route path="/dashboard" element={<DashBoard/>}/>
    </Routes>
     <Footer/>
     </Router>
