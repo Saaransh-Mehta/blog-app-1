@@ -1,7 +1,7 @@
 
 import React from "react"
 import Navbar from "./Components/Navbar"
-import { BrowserRouter as Router,Route,Routes } from "react-router-dom"
+import { BrowserRouter as Router,Route,Routes , useLocation} from "react-router-dom"
 import Home from "./Components/Home"
 import Register from "./Components/Register"
 import BlogSection from "./Components/BlogSection"
@@ -11,12 +11,16 @@ import Login from "./Components/Login"
 import DashBoard from "./Components/DashBoard"
 
 function App() {
-
+const location = useLocation();
 
   return (
-    <Router>
+
+    <>
+
+    {location.pathname !== "/dashboard" && <Navbar/>}
+ 
    
-   <Navbar/>
+  
    <Routes>
     <Route path="/" element={<Home/>}/>
     <Route path="/register" element={<Register/>}/>
@@ -26,8 +30,17 @@ function App() {
     <Route path="/dashboard" element={<DashBoard/>}/>
    </Routes>
     <Footer/>
+    
+    </>
+  )
+}
+
+function MainApp(){
+  return(
+    <Router>
+      <App/>
     </Router>
   )
 }
 
-export default App
+export default MainApp

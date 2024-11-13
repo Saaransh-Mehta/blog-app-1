@@ -5,7 +5,7 @@ import { createComment, deleteComment } from '../controllers/comment.controller.
 
 const BlogRouter = express.Router();
 
-BlogRouter.post('/create',auth,createPost)
+BlogRouter.post('/create/:id',auth,createPost)
 BlogRouter.patch('/update',auth,updatePost)
 BlogRouter.delete('/delete/:id',auth,deletePost)
 BlogRouter.get('/get/:id',auth,getPost)
