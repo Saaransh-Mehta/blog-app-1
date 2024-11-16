@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const navigate = useNavigate();
 
+    
     const handleSubmit = async(e)=>{
         console.log('button clicked')
         e.preventDefault();
@@ -19,7 +21,12 @@ const Login = () => {
                     email,
                     password
                 })
-            }).then((res)=>res.json())
+            }).then((res)=>{
+                if(res.ok){
+                    navigate('/dashboard')
+                    res.json()
+                }
+            })
             .then((data)=>console.log(data))
         }
         catch(err){

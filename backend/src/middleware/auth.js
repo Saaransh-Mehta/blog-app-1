@@ -23,5 +23,20 @@ const auth = async(req,res,next) =>{
         return res.status(401).json({message:"Error sending request"})
     }
 }
+const authOnHeader = async(req,res,next)=>{
+    const token = req.headers.authorization.split(" ")[1]
+    if(!token){
+        throw new Error("No token found")
+    }
+    jwt.verify(token,process.env.JWT_KEY,(err,user)=>{
+        if(err){
+            throw new Error("Error occured")
+
+        }else{
+            req.user=user
+            next()
+        }
+    })
+}
 
 export {auth}
