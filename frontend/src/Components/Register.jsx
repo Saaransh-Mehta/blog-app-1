@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import loginImg from '../Images/login-2.png'
 import axios from 'axios'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 
 const Register = () => {
 
@@ -12,7 +12,7 @@ const Register = () => {
   const [isChecked,setIsChecked] = useState(false)
   const [error,setError] = useState(false)
 
-  
+  const navigate = useNavigate()
 
 
 
@@ -42,6 +42,8 @@ const Register = () => {
       }).then((res)=>{
         if(!res.ok){
           setExistingUser(true)
+        }else{
+          navigate('/dashboard')
         }
         if(existingUser){
           setError("User already exists")

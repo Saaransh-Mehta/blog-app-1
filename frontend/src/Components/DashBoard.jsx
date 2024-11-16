@@ -9,6 +9,7 @@
     ChevronDownIcon 
   } from '@heroicons/react/24/outline'
   import LoadingSign from './LoadingSign'
+  import { useNavigate } from 'react-router-dom'
 
 
    
@@ -16,6 +17,7 @@
     const [postTitle, setPostTitle] = useState('')
     const [postContent, setPostContent] = useState('')
     const [loader, setLoader ] = useState(true)
+    const navigate = useNavigate()
     
     useEffect(()=>{
       setTimeout(()=>{
@@ -50,6 +52,13 @@
       e.preventDefault()
       console.log('Quick post submitted:', { postTitle, postContent })
     }
+    const logout = async()=>{
+      await fetch("http://localhost:3000/api/user/logout",{
+        method:"POST",
+        credentials:"include"
+      })
+      navigate("/")
+    }
 
     return (
       <>
@@ -79,6 +88,7 @@
                   </nav>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:items-center">
+                <button onClick={logout} className="btn btn-outline btn-error">Logout</button>
                   <button type="button" className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span className="sr-only">View notifications</span>
                     <div className="indicator">
