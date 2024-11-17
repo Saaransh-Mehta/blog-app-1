@@ -76,10 +76,11 @@ const getUser = async(req,res)=>{
 
     
     const user = req.user
-    
+
+    const userData = await User.findOne({email:user.email}).select("-password")
     return res.status(200).json({
         message:"User fetched successfully",
-        data:user
+        data:userData
     })
 }
 

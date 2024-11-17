@@ -17,6 +17,7 @@
     const [postTitle, setPostTitle] = useState('')
     const [postContent, setPostContent] = useState('')
     const [loader, setLoader ] = useState(true)
+    const [user,setUser] = useState(null)
     const navigate = useNavigate()
     
     useEffect(()=>{
@@ -25,6 +26,17 @@
       },2000)
 
     },[])
+
+    useEffect(()=>{
+      const response = fetch("http://localhost:3000/api/user/get-user",{
+        method:"GET",
+        credentials:'include'
+      }).then((res)=>res.json())
+      .then((data)=>setUser(data.data))
+      
+      
+    },[])
+    console.log(user)
     const handleSubmit = async(e)=>{
       e.preventDefault();
       try {
@@ -129,11 +141,8 @@
                         <dl>
                           <dt className="text-sm font-medium text-gray-500 truncate">Total Posts</dt>
                           <dd className="flex items-baseline">
-                            <div className="text-2xl font-semibold text-gray-900">123</div>
-                            <div className="ml-2 flex items-baseline text-sm font-semibold text-green-600">
-                              <span className="sr-only">Increased by</span>
-                              5
-                            </div>
+                            <div className="text-2xl font-semibold text-gray-900">{user.posts.length}</div>
+                            
                           </dd>
                         </dl>
                       </div>
