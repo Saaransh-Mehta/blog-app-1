@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import HeroSection from './HeroSection'
 import HeroSectionTwo from './HeroSectionTwo'
-
 import { NavLink } from 'react-router-dom'
 import LoadingSign from './LoadingSign'
 

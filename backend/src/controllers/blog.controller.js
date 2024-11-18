@@ -88,4 +88,12 @@ const deletePost = async (req,res)=>{
         message:"Psot deleted succesfully"
     })
 }
-export {createPost,updatePost,getPost,deletePost}
+const allPosts = async(req,res)=>{
+    const user = req.user
+    const allPost = await Post.find({author:user._id}).select("-_id")
+    return res.status(200).json({
+        message:"All posts fetched successfully",
+        data:allPost
+    })
+}
+export {createPost,updatePost,getPost,deletePost,allPosts}
