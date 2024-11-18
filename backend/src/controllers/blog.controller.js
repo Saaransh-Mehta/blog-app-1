@@ -58,6 +58,10 @@ const updatePost = async(req,res)=>{
     
 }
 const getPost = async(req,res)=>{
+    const user =await User.findOne({email:req.email}).populate("posts")
+    if(!user){
+        throw new Error("Posts not found")
+    }
 
     const getPost = await Post.findOne({_id:req.params.id}).select("-_id ")
     if(!getPost){
@@ -66,7 +70,7 @@ const getPost = async(req,res)=>{
 
     return res.status(200).json({
         message:"Post fetched successfully",
-        data:getPost
+        data:[getPost,user]
     })
 
 }

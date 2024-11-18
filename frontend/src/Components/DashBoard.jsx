@@ -10,6 +10,8 @@
   } from '@heroicons/react/24/outline'
   import LoadingSign from './LoadingSign'
   import { useNavigate } from 'react-router-dom'
+  import { Tooltip as ReactTooltip } from 'react-tooltip'
+  import avatar from '../Images/avatar-1.png'
 
 
    
@@ -23,7 +25,7 @@
     useEffect(()=>{
       setTimeout(()=>{
         setLoader(false)
-      },2000)
+      },2500)
 
     },[])
 
@@ -35,6 +37,14 @@
       .then((data)=>setUser(data.data))
       
       
+    },[])
+    useEffect(()=>{
+      const response = fetch("http://localhost:3000/api/blog/get/:id",{
+        method:"GET",
+        credentials:'include'
+      })
+      .then((res)=>res.json())
+      .then((data)=>console.log(data))
     },[])
     console.log(user)
     const handleSubmit = async(e)=>{
@@ -116,7 +126,8 @@
                     <div>
                       <button type="button" className="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src="/placeholder-user.jpg" alt="" />
+                        <img data-tooltip-id='tooltip' data-tooltip-content={user.email} className="h-8 w-8 rounded-full" src={avatar} alt="" />
+                        <ReactTooltip id='tooltip' place="bottom-end" type="dark" effect="float" />
                       </button>
                     </div>
                   </div>
@@ -161,11 +172,8 @@
                         <dl>
                           <dt className="text-sm font-medium text-gray-500 truncate">Total Views</dt>
                           <dd className="flex items-baseline">
-                            <div className="text-2xl font-semibold text-gray-900">45,231</div>
-                            <div className="ml-2 flex items-baseline text-sm font-semibold text-green-600">
-                              <span className="sr-only">Increased by</span>
-                              20%
-                            </div>
+                            <div className="text-2xl font-semibold text-gray-900">0</div>
+                            
                           </dd>
                         </dl>
                       </div>
