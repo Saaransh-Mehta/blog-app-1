@@ -14,15 +14,15 @@ const createPost = async(req,res)=>{
     if(!title || !description || !content){
         throw new Error("All fields are required")
     }
-
+    const userId = req.user.id
     const post = await Post.create({
         title,
         description,
         content,
-        author:req.user._id
+        author:userId
     })
     await post.save()
-    await User.findByIdAndUpdate({_id:req.params.id},{
+    await User.findByIdAndUpdate(userId,{
         $push:{posts:post._id}
     })
     
@@ -90,7 +90,7 @@ const deletePost = async (req,res)=>{
 }
 const allPosts = async(req,res)=>{
     const user = req.user
-    const allPost = await Post.find({author:user._id}).select("-_id")
+    const allPost = await Post.find({author:user.id}).select("-id -_id")
     return res.status(200).json({
         message:"All posts fetched successfully",
         data:allPost

@@ -9,18 +9,21 @@
     ChevronDownIcon 
   } from '@heroicons/react/24/outline'
   import LoadingSign from './LoadingSign'
-  import { useNavigate } from 'react-router-dom'
+  import { NavLink, useNavigate } from 'react-router-dom'
   import { Tooltip as ReactTooltip } from 'react-tooltip'
   import avatar from '../Images/avatar-1.png'
+
 
 
    
   export default function BlogDashboard() {
     const [postTitle, setPostTitle] = useState('')
     const [postContent, setPostContent] = useState('')
+    const [desc , setDesc] = useState('')
     const [loader, setLoader ] = useState(true)
     const [user,setUser] = useState(null)
     const [posts,setPosts] = useState(null)
+
     const navigate = useNavigate()
     
     useEffect(()=>{
@@ -39,15 +42,15 @@
       
       
     },[])
-    // useEffect(()=>{
-    //   const response = fetch("http://localhost:3000/api/blog/get/:id",{
-    //     method:"GET",
-    //     credentials:'include'
-    //   })
-    //   .then((res)=>res.json())
-    //   .then((data)=>console.log(data))
-    // },[])
-    // console.log(user)
+
+    
+    const handleDelete = async()=>{
+
+    }
+
+    const handleEdit = async()=>{
+      console.log("Edit start")
+    }
 
     useEffect(()=>{
       const post = fetch("http://localhost:3000/api/blog/all-post",{
@@ -62,13 +65,14 @@
       try {
         fetch('http://localhost:3000/api/blog/create', {
           method: 'POST',
+          credentials: 'include',
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             title: postTitle,
-            content: postContent
+            content: postContent,
+            description:desc
           })
 
         })
@@ -105,18 +109,18 @@
                     <HomeIcon className="h-8 w-8 text-black" />
                   </div>
                   <nav className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a href="#" className="border-black text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    <NavLink to={"/dashboard"} className="border-black text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                       Dashboard
-                    </a>
-                    <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    </NavLink>
+                    <NavLink to={"/dashboard/posts"} className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                       Posts
-                    </a>
-                    <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    </NavLink>
+                    <NavLink to={"/dashboard"} className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                       Pages
-                    </a>
-                    <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    </NavLink>
+                    <NavLink to={"/dashboard"} className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                       Media
-                    </a>
+                    </NavLink>
                   </nav>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -162,7 +166,7 @@
                         <dl>
                           <dt className="text-sm font-medium text-gray-500 truncate">Total Posts</dt>
                           <dd className="flex items-baseline">
-                            <div className="text-2xl font-semibold text-gray-900">{user.posts.length}</div>
+                            <div className="text-2xl font-semibold text-gray-900">{user.posts.length + 1}</div>
                             
                           </dd>
                         </dl>
@@ -223,9 +227,14 @@
                       {posts.map((post, index) => (
                         <div key={index} className="py-4 flex justify-between items-center">
                           <div className="text-sm text-gray-900">{post.title}</div>
-                          <button className="px-2 py-1 text-xs font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                          <div className='flex gap-3'>
+                          <button onClick={handleEdit} className="px-2 py-1 text-xs font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Edit
                           </button>
+                          <button onClick={handleDelete} className="px-2 py-1 text-xs font-medium rounded-md text-red-700 bg-red-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            Delete
+                          </button>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -268,6 +277,20 @@
                           placeholder="Write your post content here..."
                           value={postContent}
                           onChange={(e) => setPostContent(e.target.value)}
+                        ></textarea>
+                      </div>
+                      <div>
+                        <label htmlFor="post-content" className="block text-sm font-medium text-gray-700">
+                          Content
+                        </label>
+                        <textarea
+                          id="post-desc"
+                          name="post-desc"
+                          rows={3}
+                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          placeholder="Write your post content here..."
+                          value={desc}
+                          onChange={(e) => setDesc(e.target.value)}
                         ></textarea>
                       </div>
                       <div>

@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import Comment from "../Models/Comment.js";
 import { Post } from "../Models/Post.js";
+import { User } from "../Models/User.js";
 
 const createComment = async(req,res)=>{
     const {content} = req.body

@@ -9,9 +9,11 @@ import CreateBlog from "./Components/CreateBlog"
 import Footer from "./Components/Footer"
 import Login from "./Components/Login"
 import DashBoard from "./Components/DashBoard"
+import Posts from "./Components/Posts"
 
 function App() {
 const location = useLocation();
+  
 
   return (
 
@@ -28,6 +30,7 @@ const location = useLocation();
     <Route path="/create-blog" element={<CreateBlog/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/dashboard" element={<DashBoard/>}/>
+    <Route path="/posts" element={<Posts/>}/>
    </Routes>
     <Footer/>
     
