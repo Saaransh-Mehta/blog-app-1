@@ -31,6 +31,11 @@ app.use('/api/user',UserRouter)
 app.use('/api/blog',BlogRouter)
 app.use('/api/data',dataRouter)
 
+app.use((req,res,next)=>{
+
+   return res.status(404).send("Route not found bhyii kya kar rha h")
+})
+
 
 app.listen(3000,()=>{
 console.log("App listening on port 3000")

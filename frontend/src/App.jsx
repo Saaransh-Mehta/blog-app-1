@@ -10,6 +10,7 @@ import Footer from "./Components/Footer"
 import Login from "./Components/Login"
 import DashBoard from "./Components/DashBoard"
 import Posts from "./Components/Posts"
+import NotFound from "./Components/NotFound"
 
 function App() {
 const location = useLocation();
@@ -31,6 +32,7 @@ const location = useLocation();
     <Route path="/login" element={<Login/>}/>
     <Route path="/dashboard" element={<DashBoard/>}/>
     <Route path="/posts" element={<Posts/>}/>
+    <Route Component={NotFound}/>
    </Routes>
     <Footer/>
     

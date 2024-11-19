@@ -1,8 +1,9 @@
 import React from 'react'
+import { HomeIcon } from '@heroicons/react/24/outline'
 
 const Posts = () => {
   return (
-    <div className='h-[100vh]'>Posts</div>
+    <div>Posts</div>
   )
 }
 
