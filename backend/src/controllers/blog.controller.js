@@ -96,4 +96,11 @@ const allPosts = async(req,res)=>{
         data:allPost
     })
 }
-export {createPost,updatePost,getPost,deletePost,allPosts}
+
+const overallPost = async(req,res)=>{
+    const allPost = await Post.find()
+    return res.status(201).json({
+        data:allPost
+    })
+}
+export {createPost,updatePost,getPost,deletePost,allPosts,overallPost}

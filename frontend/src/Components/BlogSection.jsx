@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import sample from '../Data/sample.json'
 import HorizontalCard from './HorizontalCard'
 
 const BlogSection = () => {
+  const [blogs,setData] = useState([])
     useGSAP(()=>{
         gsap.to(".headText", {opacity:1,duration:2,ease:"sine.inOut"})
     })
+
+    useEffect(()=>{
+      const allPost = fetch('http://localhost:3000/api/blog/all-data',{
+        method:'GET',
+        credentials:'include'
+      }).then((res)=>res.json())
+      .then((data)=>setData(data.data))
+    },[])
+    console.log(blogs)
+    
   return (
     <>
     <div className='bg-cream'>
@@ -16,7 +27,7 @@ const BlogSection = () => {
         <p className='headText opacity-0 text-3xl mt-5 flex justify-center'>Recent Blogs Posted</p>
     </div>
     <div className='mt-10 card-show grid place-items-center'>
-    {sample.map((data,key)=>{
+    {blogs.map((data,key)=>{
         return(
           <div className='m-5 w-3/4 rounded-lg grid place-items-center '>
             <div key={key} className="w-full hover:bg-slate-400 h-40 flex overflow-hidden rounded-lg shadow-lg bg-white">

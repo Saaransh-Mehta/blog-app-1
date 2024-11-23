@@ -27,11 +27,12 @@ const location = useLocation();
    <Routes>
     <Route path="/" element={<Home/>}/>
     <Route path="/register" element={<Register/>}/>
-    <Route path="/blogs" element={<BlogSection/>}/>
+    {/* <Route path="/blogs" element={<BlogSection/>}/> */}
     <Route path="/create-blog" element={<CreateBlog/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/dashboard" element={<DashBoard/>}/>
-    <Route path="/posts" element={<Posts/>}/>
+    <Route path="/user/posts" element={<Posts/>}/>
+    <Route path="/user/blog" element={<BlogSection/>}/>
     <Route Component={NotFound}/>
    </Routes>
     <Footer/>
