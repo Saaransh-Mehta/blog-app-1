@@ -23,6 +23,7 @@
     const [loader, setLoader ] = useState(true)
     const [user,setUser] = useState(null)
     const [posts,setPosts] = useState(null)
+    const [keys,setKeys] = useState(null)
 
     const navigate = useNavigate()
     
@@ -45,6 +46,8 @@
 
     
     const handleDelete = async()=>{
+      console.log("Delete start")
+      
 
     }
 
@@ -95,6 +98,7 @@
       })
       navigate("/")
     }
+   
 
     return (
       <>
@@ -225,13 +229,13 @@
                     <h3 className="text-lg leading-6 font-medium text-gray-900">Recent Posts</h3>
                     <div className="mt-5 divide-y divide-gray-200">
                       {posts.map((post, index) => (
-                        <div key={index} className="py-4 flex justify-between items-center">
+                        <div key={index} className="py-4 flex justify-between items-center" >
                           <div className="text-sm text-gray-900">{post.title}</div>
                           <div className='flex gap-3'>
-                          <button onClick={handleEdit} className="px-2 py-1 text-xs font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                          <button onClick={handleEdit}  className="px-2 py-1 text-xs font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Edit
                           </button>
-                          <button onClick={handleDelete} className="px-2 py-1 text-xs font-medium rounded-md text-red-700 bg-red-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                          <button  onClick={handleDelete} className="px-2 py-1 text-xs font-medium rounded-md text-red-700 bg-red-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                             Delete
                           </button>
                           </div>
